@@ -1,17 +1,17 @@
-package beans;
+package com.epam.spring.homework2.beans;
 
-public class BeanD {
+public class BeanE {
     private String name;
     private String value;
 
-    public BeanD(String name, String value) {
+    public BeanE(String name, String value) {
         this.name = name;
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "BeanD{" +
+        return "BeanE{" +
                 "name='" + name + '\'' +
                 ", value='" + value + '\'' +
                 '}';

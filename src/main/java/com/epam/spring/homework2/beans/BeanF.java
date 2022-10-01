@@ -1,4 +1,4 @@
-package beans;
+package com.epam.spring.homework2.beans;
 
 public class BeanF {
     private String name;

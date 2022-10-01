@@ -1,10 +1,14 @@
-package beans;
+package com.epam.spring.homework2.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BeanC {
     private String name;
     private String value;
 
-    public BeanC(String name, String value) {
+    public BeanC(@Value("${beanC.name}") String name, @Value("${beanC.value}") String value) {
         this.name = name;
         this.value = value;
     }
