@@ -7,4 +7,5 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:beans.properties")
 
 public class BeansBCDConfig {
+
 }

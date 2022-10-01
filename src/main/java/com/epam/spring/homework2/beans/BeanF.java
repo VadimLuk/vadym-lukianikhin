@@ -2,9 +2,9 @@ package com.epam.spring.homework2.beans;
 
 public class BeanF {
     private String name;
-    private String value;
+    private int value;
 
-    public BeanF(String name, String value) {
+    public BeanF(String name, int value) {
         this.name = name;
         this.value = value;
     }

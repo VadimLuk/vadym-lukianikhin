@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class BeanD {
     private String name;
-    private String value;
+    private int value;
 
-    public BeanD(@Value("${beanD.name}") String name, @Value("${beanD.value}") String value) {
+    public BeanD(@Value("${beanD.name}") String name, @Value("${beanD.value}") int value) {
         this.name = name;
         this.value = value;
     }
