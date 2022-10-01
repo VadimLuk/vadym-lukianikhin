@@ -1,11 +1,9 @@
 package com.epam.spring.homework2.beans;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(2)
 public class BeanB {
     private String name;
     private int value;
@@ -21,5 +19,18 @@ public class BeanB {
                 "name='" + name + '\'' +
                 ", value='" + value + '\'' +
                 '}';
+    }
+
+
+    public void init() {
+        System.out.println(getClass().getSimpleName() + " @Bean:initMethod -> init");
+    }
+
+    public void customInit(){
+        System.out.println(getClass().getSimpleName() + " @Bean:initMethod -> customInit");
+    }
+
+    public void destroy() {
+        System.out.println(getClass().getSimpleName() + " @Bean:destroyMethod");
     }
 }

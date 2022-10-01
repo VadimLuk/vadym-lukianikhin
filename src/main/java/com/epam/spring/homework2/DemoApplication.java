@@ -1,20 +1,31 @@
 package com.epam.spring.homework2;
 
-import com.epam.spring.homework2.beans.BeanB;
-import com.epam.spring.homework2.beans.BeanC;
-import com.epam.spring.homework2.beans.BeanD;
+
+import com.epam.spring.homework2.beanfactorypostprocessor.CustomBeanFactoryPostProcessor;
 import com.epam.spring.homework2.config.BeansConfig;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Arrays;
 
 
 public class DemoApplication {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        CustomBeanFactoryPostProcessor processor = new CustomBeanFactoryPostProcessor();
 
-        System.out.println(context.getBean("beanB", BeanB.class));
-        System.out.println(context.getBean("beanC", BeanC.class));
-        System.out.println(context.getBean("beanD", BeanD.class));
+        context.register(BeansConfig.class);
+        context.addBeanFactoryPostProcessor(processor);
+        context.refresh();
 
+
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+
+        Arrays.stream(context.getDefaultListableBeanFactory()
+                .getBeanDefinitionNames())
+                .forEach(
+                        bean->System.out.println(context.getDefaultListableBeanFactory().getBeanDefinition(bean)));
+
+
+        context.registerShutdownHook();
     }
 }
