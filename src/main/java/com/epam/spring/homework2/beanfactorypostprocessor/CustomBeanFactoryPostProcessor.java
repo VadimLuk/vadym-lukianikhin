@@ -13,11 +13,11 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         System.out.println("BeanFactoryPostProcessor is Working");
-        System.out.println("Previous: " +configurableListableBeanFactory.getBeanDefinition("beanB").getInitMethodName());
+        System.out.println("Previous BeanB init method: " +configurableListableBeanFactory.getBeanDefinition("beanB").getInitMethodName());
 
         configurableListableBeanFactory.getBeanDefinition("beanB").setInitMethodName("customInit");
 
-        System.out.println("New: " + configurableListableBeanFactory.getBeanDefinition("beanB").getInitMethodName());
+        System.out.println("New BeanB init method: " + configurableListableBeanFactory.getBeanDefinition("beanB").getInitMethodName());
         System.out.println("BeanFactoryPostProcessor ended his work");
     }
 }

@@ -13,7 +13,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("\nStarted validating :" + beanName);
-        if (validateNameField(bean) && validateValueField(bean)){
+        if (validateNameField(bean) && validateValueField(bean)) {
             System.out.println(beanName + " is Valid");
             return bean;
         } else {
@@ -22,31 +22,29 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
     }
 
     private boolean validateNameField(Object bean) {
-        String name;
         try {
             Field field = bean.getClass().getDeclaredField("name");
             field.setAccessible(true);
-            name = (String) field.get(bean);
+            String name = (String) field.get(bean);
+            return Objects.nonNull(name);
         } catch (NoSuchFieldException e) {
             return true;
         } catch (IllegalAccessException e) {
             return true;
         }
-        return Objects.nonNull(name);
     }
 
     private boolean validateValueField(Object bean) {
-        int value;
         try {
             Field field = bean.getClass().getDeclaredField("value");
             field.setAccessible(true);
-            value = (int) field.get(bean);
+            int value = (int) field.get(bean);
+            return value > 0;
         } catch (NoSuchFieldException e) {
             return true;
         } catch (IllegalAccessException e) {
             return true;
         }
-        return value > 0;
     }
 
 }
