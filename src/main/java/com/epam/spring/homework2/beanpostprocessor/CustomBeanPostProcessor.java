@@ -30,6 +30,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
             Field field = bean.getClass().getDeclaredField("name");
             field.setAccessible(true);
             String name = (String) field.get(bean);
+            System.out.println(name);
             return Objects.nonNull(name);
         } catch (NoSuchFieldException e) {
             return true;
@@ -43,6 +44,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
             Field field = bean.getClass().getDeclaredField("value");
             field.setAccessible(true);
             int value = (int) field.get(bean);
+            System.out.println(value);
             return value > 0;
         } catch (NoSuchFieldException e) {
             return true;
