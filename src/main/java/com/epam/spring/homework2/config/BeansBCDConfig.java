@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.annotation.Order;
 
 @Configuration
 @PropertySource("classpath:beans.properties")
@@ -24,7 +23,7 @@ public class BeansBCDConfig {
         return new BeanB("Bill", 11);
     }
 
-    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Bean(name = "beanC", initMethod = "init", destroyMethod = "destroy")
     @DependsOn("beanB")
     public BeanC BeanC() {
         return new BeanC("Mark", 30);

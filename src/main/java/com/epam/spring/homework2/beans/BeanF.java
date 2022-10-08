@@ -1,10 +1,12 @@
 package com.epam.spring.homework2.beans;
 
+import com.epam.spring.homework2.beans.annotations.MyCustomBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@MyCustomBean
 @Lazy
 public class BeanF {
     private String name;

@@ -1,5 +1,6 @@
 package com.epam.spring.homework2.beans;
 
+import com.epam.spring.homework2.beans.annotations.MyCustomBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -7,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component
+@MyCustomBean
 public class BeanE {
     private String name;
     private int value;
